@@ -1,0 +1,53 @@
+﻿@model IEnumerable<taskactivity4_Client.Models.City>
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h1>WEATHER FORECAST FOR CHENNAI</h1>
+
+    <p>
+        <a asp-action="Create">ADD A FORECAST</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.City_ID)
+                </th>
+                <th>
+                    <h3>CITY</h3>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Forecast)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pincode)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City_ID)
+                    </td>
+                    <td>
+                        <h2>Chennai</h2>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Forecast)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pincode)
+                    </td>
+                    <td>
+                        @Html.ActionLink("GetWeather", "GetWeather", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.City_ID }) |
+                        @Html.ActionLink("GetWeatherForACity", "GetWeatherForACity", new { /*id = 1*/ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
